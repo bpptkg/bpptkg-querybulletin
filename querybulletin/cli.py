@@ -100,10 +100,15 @@ def main():
             events = []
 
     if events:
+        pd.set_option('display.max_rows', None)
+        pd.set_option('display.max_columns', None)
+
         df = pd.DataFrame(events)
         if args.output:
             if args.output.lower() == 'stdout':
                 output = sys.stdout
+            else:
+                output = args.output
 
             if args.long_format:
                 df.to_csv(output,
@@ -114,9 +119,17 @@ def main():
                                                     index=False,
                                                     sep=args.delimiter)
         else:
-            pd.set_option('display.max_rows', None)
-            pd.set_option('display.max_columns', None)
             if args.long_format:
                 print(df, file=sys.stdout)
             else:
                 print(df[settings.DEFAULT_COLUMNS], file=sys.stdout)
+    else:
+        # Empty events.
+        df = pd.DataFrame()
+        if args.output:
+            if args.output.lower() == 'stdout':
+                output = sys.stdout
+            else:
+                output = args.output
+
+            df.to_csv(output, index=False, sep=args.delimiter)
