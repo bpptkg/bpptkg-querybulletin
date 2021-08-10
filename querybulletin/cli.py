@@ -1,5 +1,6 @@
 import argparse
 import sys
+import os
 
 import pandas as pd
 from sqlalchemy import create_engine
@@ -52,6 +53,11 @@ def parse_args():
         default=',',
         help='CSV delimiter. Default to comma (,).')
 
+    parser.add_argument(
+        '-c', '--config',
+        default=settings.CONFIG_PATH,
+        help='Path to the querybulletin JSON config file.')
+
     return parser.parse_args()
 
 
@@ -61,18 +67,23 @@ def validate_args(args):
             raise ValueError(
                 "Start time value '{}' is not a valid datetime."
                 "".format(args.start))
+
     if args.end:
         if not utils.is_valid_datetime(args.end):
             raise ValueError(
                 "End time value '{}' is not a valid datetime."
                 "".format(args.end))
 
+    if not os.path.isfile(args.config):
+        raise exceptions.ImproperlyConfigured(
+            "JSON config file for querybulletin is not found. ")
+
 
 def main():
     args = parse_args()
     validate_args(args)
 
-    config = utils.load_config(settings.CONFIG_PATH)
+    config = utils.load_config(args.config)
     engine_url = config.get('dburl')
     if engine_url is None:
         raise exceptions.ImproperlyConfigured(
