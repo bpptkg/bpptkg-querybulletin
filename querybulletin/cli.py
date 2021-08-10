@@ -1,5 +1,4 @@
 import argparse
-from os import sep
 import sys
 
 import pandas as pd
@@ -8,10 +7,13 @@ from sqlalchemy.pool import NullPool
 
 from . import exceptions, query, settings, utils
 from .models import Base, Bulletin
+from .version import __version__
 
 
 def parse_args():
-    parser = argparse.ArgumentParser('Query seismic bulletin database.')
+    parser = argparse.ArgumentParser(
+        description='Query seismic bulletin database (v{})'.format(__version__))
+
     parser.add_argument(
         '-s', '--start',
         help="Start time of query in 'YYYY-mm-dd HH:MM:SS' format. "
