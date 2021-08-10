@@ -11,3 +11,4 @@ docs/_build/
 .pytest_cache
 dist/
 *.egg-info
+bulletin.csv
