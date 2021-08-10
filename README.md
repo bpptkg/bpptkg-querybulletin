@@ -43,4 +43,4 @@ Store output to the CSV file:
 
 ## License
 
-MIT
+[MIT](https://github.com/bpptkg/bpptkg-querybulletin/blob/main/LICENSE)
