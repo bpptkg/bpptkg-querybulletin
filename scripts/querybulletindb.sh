@@ -15,5 +15,5 @@
 # $3 -> Path to the output file.
 #
 
-source /path/to/venv/
+source /path/to/venv/bin/activate
 querybulletin -c /path/to/.bulletin/querybulletin/config.json -s "$1" -e "$2" -d "|" -o "$3"
