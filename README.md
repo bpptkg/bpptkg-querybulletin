@@ -14,14 +14,17 @@ Install database vendor dependent client package, e.g. for MySQL:
 
 ## Database Credentials
 
-Create JSON file in `~/.bulletin/querybulletin/config.json to store your seismic
-bulletin database credentials. For example:
+Create JSON file in `~/.bulletin/querybulletin/config.json` to store your
+seismic bulletin database credentials. For example:
 
 ```json
 {
-    "dburl": "mysql://user:password@localhost/seismic_bulletin"
+  "dburl": "mysql://user:password@localhost/seismic_bulletin"
 }
 ```
+
+If you have custom config file path, add `-c` or `--config` option to the full
+path of JSON config file in the script arguments.
 
 ## Examples
 
