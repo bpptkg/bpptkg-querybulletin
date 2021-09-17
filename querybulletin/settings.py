@@ -13,6 +13,7 @@ DEFAULT_COLUMNS = [
     'eventdate',
     'duration',
     'eventtype',
+    'last_modified',
 ]
 
 CSV_DELIMITER = '|'
