@@ -58,6 +58,12 @@ def parse_args():
         default=settings.CONFIG_PATH,
         help='Path to the querybulletin JSON config file.')
 
+    parser.add_argument(
+        '-m', '--modified',
+        action='store_true',
+        help='If provided, query events in the bulletin that was modified '
+        'since start and before end time.')
+
     return parser.parse_args()
 
 
@@ -97,11 +103,22 @@ def main():
     if args.start and args.end:
         start = utils.parse_datetime_naive(args.start)
         end = utils.parse_datetime_naive(args.end)
-        events = query.get_bulletin_by_range(engine,
-                                             Bulletin,
-                                             start,
-                                             end,
-                                             eventtype=eventtype)
+        if args.modified:
+            events = query.get_bulletin_modified_by_range(
+                engine,
+                Bulletin,
+                start,
+                end,
+                eventtype=eventtype,
+            )
+        else:
+            events = query.get_bulletin_by_range(
+                engine,
+                Bulletin,
+                start,
+                end,
+                eventtype=eventtype,
+            )
 
     if args.eventid:
         event = query.get_bulletin_by_id(engine, Bulletin, args.eventid)
