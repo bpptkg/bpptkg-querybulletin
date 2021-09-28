@@ -1,6 +1,6 @@
 import argparse
-import sys
 import os
+import sys
 
 import pandas as pd
 from sqlalchemy import create_engine
@@ -40,8 +40,9 @@ def parse_args():
 
     parser.add_argument(
         '-o', '--output',
-        help='Path to store query result to the CSV file. If not provided, '
-             'the script will output the results to the standard output.')
+        help='Path to store query result to the CSV file. If not provided or '
+             'equal to "stdout", the script will output the results '
+             'to the standard output. ')
 
     parser.add_argument(
         '-l', '--long-format',
