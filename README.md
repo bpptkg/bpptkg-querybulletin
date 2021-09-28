@@ -12,6 +12,9 @@ Install database vendor dependent client package, e.g. for MySQL:
 
     pip install mysqlclient
 
+After the installation, you will have `querybulletin` program in your executable
+path.
+
 ## Database Credentials
 
 Create JSON file in `~/.bulletin/querybulletin/config.json` to store your
@@ -43,6 +46,10 @@ Query bulletin for certain event ID:
 Store output to the CSV file:
 
     querybulletin -s "2021-08-01 06:00:00" -e "2021-08-10 06:00:00" -t VTB -o bulletin.csv
+
+To see all program options, run:
+
+    querybulletin -h
 
 ## License
 
