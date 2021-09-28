@@ -39,7 +39,7 @@ setup(
         'Environment :: Console',
         'Operating System :: OS Independent',
         'Intended Audience :: Science/Research',
-        "License :: OSI Approved :: MIT License",
+        'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
